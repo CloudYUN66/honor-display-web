@@ -60,12 +60,13 @@ function HomePage({ awards }) {
         onAwardSelect={handleAwardSelect}
       />
       {currentAward && (
-        <div className="award-section" key={`${currentAwardId}-${currentPage}`}>
+        <div className="award-section">
           <div className="award-title-container">
             <h2 className="award-title">{currentAward.name}</h2>
           </div>
           <p className="award-description">{currentAward.description}</p>
-          <div className="winners-grid">
+          
+          <div className="winners-grid" key={`${currentAwardId}-${currentPage}`}>
             {getCurrentPageWinners().map((winner, index) => (
               <div 
                 key={winner.id} 
@@ -83,6 +84,7 @@ function HomePage({ awards }) {
               </div>
             ))}
           </div>
+          
           {totalPages > 1 && (
             <div className="pagination">
               <button 

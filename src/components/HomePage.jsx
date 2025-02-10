@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navigation from './Navigation';
 import WinnerModal from './WinnerModal';
 import '../styles/HomePage.css';
@@ -6,11 +6,43 @@ import '../styles/HomePage.css';
 function HomePage({ awards }) {
   const [currentAwardId, setCurrentAwardId] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const winnersPerPage = 15; // 确保每页显示15个
+  const [winnersPerPage, setWinnersPerPage] = useState(15);
+  const gridRef = useRef(null);
   const [selectedWinner, setSelectedWinner] = useState(null);
   
   const currentAward = awards.find(award => award.id === currentAwardId);
   
+  // 计算每页显示数量
+  const calculateWinnersPerPage = () => {
+    if (!gridRef.current) return 15;
+    
+    const gridWidth = gridRef.current.offsetWidth;
+    const gridHeight = gridRef.current.offsetHeight;
+    const itemWidth = 200; // 预估的每个获奖者卡片宽度
+    const itemHeight = 200; // 预估的每个获奖者卡片高度
+    const gap = 25; // 间距
+    
+    const columns = Math.floor((gridWidth + gap) / (itemWidth + gap));
+    const rows = Math.floor((gridHeight + gap) / (itemHeight + gap));
+    
+    return Math.max(columns * rows, 1); // 确保至少显示1个
+  };
+
+  // 监听窗口大小变化
+  useEffect(() => {
+    const handleResize = () => {
+      const newWinnersPerPage = calculateWinnersPerPage();
+      if (newWinnersPerPage !== winnersPerPage) {
+        setWinnersPerPage(newWinnersPerPage);
+        setCurrentPage(1); // 重置到第一页
+      }
+    };
+
+    handleResize(); // 初始计算
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [winnersPerPage]);
+
   // 计算当前页的获奖者
   const getCurrentPageWinners = () => {
     if (!currentAward) return [];
@@ -66,7 +98,11 @@ function HomePage({ awards }) {
           </div>
           <p className="award-description">{currentAward.description}</p>
           
-          <div className="winners-grid" key={`${currentAwardId}-${currentPage}`}>
+          <div 
+            className="winners-grid" 
+            key={`${currentAwardId}-${currentPage}`}
+            ref={gridRef}
+          >
             {getCurrentPageWinners().map((winner, index) => (
               <div 
                 key={winner.id} 

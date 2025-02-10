@@ -214,10 +214,9 @@
 
 .winners-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 25px;
-  padding: 0;
+  padding: 20px;
   min-height: 400px;
   width: 100%;
   margin: 0 auto;
@@ -225,6 +224,7 @@
 }
 
 .winner-card {
+  aspect-ratio: 1;
   text-align: center;
   transition: all 0.5s ease;
   animation: fadeInScale 0.5s ease forwards;
@@ -333,16 +333,15 @@
 
 @media (max-width: 1200px) {
   .winners-grid {
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 0 20px;
+    padding: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .winners-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
+    padding: 10px;
   }
 }
 

@@ -56,10 +56,10 @@
   font-size: 3.5rem;
   margin-bottom: 50px;
   color: transparent;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background: linear-gradient(45deg, #F9F4D8 30%, #DDC89C 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+  text-shadow: 0 0 20px rgba(249, 244, 216, 0.3);
   animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -107,10 +107,10 @@
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+    text-shadow: 0 0 20px rgba(249, 244, 216, 0.3);
   }
   to {
-    text-shadow: 0 0 30px rgba(0, 198, 255, 0.5);
+    text-shadow: 0 0 30px rgba(221, 200, 156, 0.5);
   }
 }
 

@@ -1,7 +1,7 @@
 .navigation {
-  background: rgba(0, 21, 41, 0.8);
+  background: rgba(0, 21, 41, 0.4);
   backdrop-filter: blur(10px);
-  padding: 15px 0;
+  padding: 10px 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -15,8 +15,8 @@
   margin: 0 auto;
   display: flex;
   overflow-x: auto;
-  gap: 15px;
-  padding: 5px 20px;
+  gap: 12px;
+  padding: 3px 20px;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 198, 255, 0.5) transparent;
   -webkit-overflow-scrolling: touch;
@@ -25,13 +25,13 @@
 .nav-item {
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 8px 16px;
+  border-radius: 20px;
   white-space: nowrap;
   transition: all 0.3s ease;
   background: rgba(0, 198, 255, 0.05);
   border: 1px solid rgba(0, 198, 255, 0.1);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
 }
 
@@ -52,7 +52,7 @@
 
 /* 自定义滚动条样式 */
 .nav-container::-webkit-scrollbar {
-  height: 5px;
+  height: 4px;
 }
 
 .nav-container::-webkit-scrollbar-track {
@@ -84,23 +84,23 @@
 
 .navigation::before {
   left: 0;
-  background: linear-gradient(90deg, rgba(0, 21, 41, 0.8), transparent);
+  background: linear-gradient(90deg, rgba(0, 21, 41, 0.4), transparent);
 }
 
 .navigation::after {
   right: 0;
-  background: linear-gradient(-90deg, rgba(0, 21, 41, 0.8), transparent);
+  background: linear-gradient(-90deg, rgba(0, 21, 41, 0.4), transparent);
 }
 
 /* 响应式调整 */
 @media (max-width: 768px) {
   .nav-item {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 6px 14px;
+    font-size: 0.85rem;
   }
   
   .nav-container {
-    gap: 10px;
-    padding: 5px 15px;
+    gap: 8px;
+    padding: 3px 15px;
   }
 } 

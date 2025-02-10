@@ -5,26 +5,29 @@ function WinnerModal({ winner, onClose }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <button className="close-button" onClick={onClose}>&times;</button>
-        <img src={winner.avatar || '/placeholder-avatar.jpg'} alt={winner.name} />
-        <h2>{winner.name}</h2>
-        
-        <div className="info-container">
-          <div className="info-item">
-            <span className="info-label">部门：</span>
-            <span>{winner.department}</span>
+        <div className="winner-info">
+          <div className="winner-avatar-large">
+            <img src={winner.avatar} alt={winner.name} />
           </div>
-          <div className="info-item">
-            <span className="info-label">职务：</span>
-            <span>{winner.position}</span>
+          <h2>{winner.name}</h2>
+          <div className="info-grid">
+            <div className="info-item">
+              <span className="label">部门：</span>
+              <span className="value">{winner.department}</span>
+            </div>
+            <div className="info-item">
+              <span className="label">职务：</span>
+              <span className="value">{winner.position}</span>
+            </div>
+            <div className="info-item">
+              <span className="label">获奖名称：</span>
+              <span className="value">{winner.awardName}</span>
+            </div>
           </div>
-          <div className="info-item">
-            <span className="info-label">获奖名称：</span>
-            <span>{winner.awardName}</span>
+          <div className="reason-section">
+            <h3>获奖理由</h3>
+            <p>{winner.reason}</p>
           </div>
-        </div>
-
-        <div className="reason">
-          <p>{winner.reason}</p>
         </div>
       </div>
     </div>

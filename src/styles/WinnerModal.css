@@ -4,35 +4,34 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 21, 41, 0.85);
+  background: rgba(0, 21, 41, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
-  background: linear-gradient(135deg, #001529, #003366);
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 500px;
+  background: linear-gradient(165deg, #001529, #003366);
+  border-radius: 25px;
+  padding: 50px 40px;
   width: 90%;
+  max-width: 550px;
   position: relative;
-  color: white;
-  border: 1px solid rgba(0, 198, 255, 0.2);
-  box-shadow: 0 0 30px rgba(0, 198, 255, 0.1);
   animation: slideUp 0.3s ease;
+  border: 1px solid rgba(0, 198, 255, 0.2);
+  box-shadow: 0 0 50px rgba(0, 198, 255, 0.15);
 }
 
 .close-button {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 198, 255, 0.1);
   border: none;
-  background: none;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 24px;
   cursor: pointer;
   width: 36px;
@@ -45,84 +44,167 @@
 }
 
 .close-button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 198, 255, 0.2);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.winner-info {
+  text-align: center;
   color: white;
 }
 
-.modal-content img {
+.winner-avatar-large {
   width: 180px;
   height: 180px;
+  margin: 0 auto 25px;
   border-radius: 50%;
-  margin: 0 auto 20px;
-  display: block;
+  overflow: hidden;
   border: 4px solid rgba(0, 198, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
-  object-fit: cover;
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.2);
+  position: relative;
 }
 
-.modal-content h2 {
-  text-align: center;
-  margin: 0 0 15px 0;
-  font-size: 2rem;
+.winner-avatar-large::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(0, 198, 255, 0.2), transparent);
+  pointer-events: none;
+}
+
+.winner-avatar-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.winner-avatar-large:hover img {
+  transform: scale(1.05);
+}
+
+.winner-info h2 {
+  font-size: 2.2rem;
+  margin: 0 0 25px;
   background: linear-gradient(45deg, #00c6ff, #0072ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.info-container {
+.info-grid {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 15px 0;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .info-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
 }
 
 .info-item:last-child {
+  border-bottom: none;
   margin-bottom: 0;
 }
 
-.info-label {
+.label {
+  color: rgba(0, 198, 255, 0.9);
   font-weight: 500;
-  min-width: 100px;
-  color: rgba(0, 198, 255, 0.8);
+  font-size: 1.05rem;
 }
 
-.reason {
-  margin-top: 20px;
-  padding: 15px;
+.value {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.05rem;
+}
+
+.reason-section {
+  text-align: left;
   background: rgba(0, 198, 255, 0.05);
-  border-radius: 12px;
-  color: rgba(255, 255, 255, 0.8);
-  font-style: italic;
-  line-height: 1.6;
-  border-left: 3px solid rgba(0, 198, 255, 0.5);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(0, 198, 255, 0.1);
+}
+
+.reason-section h3 {
+  color: rgba(0, 198, 255, 0.9);
+  margin: 0 0 15px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.reason-section h3::before {
+  content: '✨';
+  margin-right: 8px;
+}
+
+.reason-section p {
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.8;
+  margin: 0;
+  font-size: 1.05rem;
+  text-indent: 2em;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
   from {
-    transform: translateY(30px);
     opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 40px 25px;
+  }
+
+  .winner-avatar-large {
+    width: 150px;
+    height: 150px;
+  }
+
+  .winner-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .info-item {
+    padding: 10px;
+  }
+
+  .label, .value {
+    font-size: 1rem;
   }
 } 

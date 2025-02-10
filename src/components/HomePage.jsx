@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import Navigation from './Navigation';
+import WinnerModal from './WinnerModal';
 import '../styles/HomePage.css';
 
 function HomePage({ awards }) {
   const [currentAwardId, setCurrentAwardId] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const winnersPerPage = 15; // 修改为每页显示15个获奖者
+  const [selectedWinner, setSelectedWinner] = useState(null);
   
   const currentAward = awards.find(award => award.id === currentAwardId);
   
@@ -59,7 +61,9 @@ function HomePage({ awards }) {
       />
       {currentAward && (
         <div className="award-section" key={`${currentAwardId}-${currentPage}`}>
-          <h2 className="award-title">{currentAward.name}</h2>
+          <div className="award-title-container">
+            <h2 className="award-title">{currentAward.name}</h2>
+          </div>
           <p className="award-description">{currentAward.description}</p>
           <div className="winners-grid">
             {getCurrentPageWinners().map((winner, index) => (
@@ -67,6 +71,10 @@ function HomePage({ awards }) {
                 key={winner.id} 
                 className="winner-card"
                 style={{ animationDelay: `${index * 0.05}s` }}
+                onClick={() => setSelectedWinner({
+                  ...winner,
+                  awardName: currentAward.name
+                })}
               >
                 <div className="winner-avatar">
                   <img src={winner.avatar} alt={winner.name} />
@@ -97,6 +105,12 @@ function HomePage({ awards }) {
             </div>
           )}
         </div>
+      )}
+      {selectedWinner && (
+        <WinnerModal 
+          winner={selectedWinner} 
+          onClose={() => setSelectedWinner(null)} 
+        />
       )}
     </div>
   );

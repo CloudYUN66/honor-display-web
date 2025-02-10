@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from './Navigation';
 import '../styles/HomePage.css';
 
@@ -25,6 +25,30 @@ function HomePage({ awards }) {
     setCurrentPage(1);
   };
 
+  // 自动翻页逻辑
+  useEffect(() => {
+    const timer = setInterval(() => {
+      // 如果当前页是最后一页
+      if (currentPage === totalPages) {
+        // 如果当前奖项是最后一个奖项，回到第一个奖项
+        if (currentAwardId === awards.length) {
+          setCurrentAwardId(1);
+          setCurrentPage(1);
+        } else {
+          // 否则切换到下一个奖项
+          setCurrentAwardId(prev => prev + 1);
+          setCurrentPage(1);
+        }
+      } else {
+        // 如果不是最后一页，切换到下一页
+        setCurrentPage(prev => prev + 1);
+      }
+    }, 7000); // 7秒切换一次
+
+    // 清理定时器
+    return () => clearInterval(timer);
+  }, [currentPage, totalPages, currentAwardId, awards.length]);
+
   return (
     <div className="home-page">
       <h1 className="main-title">2025年度荣誉风云榜</h1>
@@ -34,12 +58,16 @@ function HomePage({ awards }) {
         onAwardSelect={handleAwardSelect}
       />
       {currentAward && (
-        <div className="award-section">
+        <div className="award-section" key={`${currentAwardId}-${currentPage}`}>
           <h2 className="award-title">{currentAward.name}</h2>
           <p className="award-description">{currentAward.description}</p>
           <div className="winners-grid">
-            {getCurrentPageWinners().map(winner => (
-              <div key={winner.id} className="winner-card">
+            {getCurrentPageWinners().map((winner, index) => (
+              <div 
+                key={winner.id} 
+                className="winner-card"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
                 <div className="winner-avatar">
                   <img src={winner.avatar} alt={winner.name} />
                 </div>

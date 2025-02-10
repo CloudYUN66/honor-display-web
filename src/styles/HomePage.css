@@ -77,6 +77,7 @@
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
+  animation: fadeIn 0.3s ease;
 }
 
 .award-title {
@@ -88,6 +89,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+  animation: slideInDown 0.5s ease forwards;
 }
 
 .award-description {
@@ -95,6 +97,7 @@
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 30px;
   font-size: 1.1rem;
+  animation: slideInUp 0.5s ease forwards;
 }
 
 .winners-grid {
@@ -105,11 +108,42 @@
   min-height: 400px;
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
 }
 
 .winner-card {
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.5s ease;
+  animation: fadeInScale 0.5s ease forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.winner-card:nth-child(1) { animation-delay: 0s; }
+.winner-card:nth-child(2) { animation-delay: 0.05s; }
+.winner-card:nth-child(3) { animation-delay: 0.1s; }
+.winner-card:nth-child(4) { animation-delay: 0.15s; }
+.winner-card:nth-child(5) { animation-delay: 0.2s; }
+.winner-card:nth-child(6) { animation-delay: 0.25s; }
+.winner-card:nth-child(7) { animation-delay: 0.3s; }
+.winner-card:nth-child(8) { animation-delay: 0.35s; }
+.winner-card:nth-child(9) { animation-delay: 0.4s; }
+.winner-card:nth-child(10) { animation-delay: 0.45s; }
+.winner-card:nth-child(11) { animation-delay: 0.5s; }
+.winner-card:nth-child(12) { animation-delay: 0.55s; }
+.winner-card:nth-child(13) { animation-delay: 0.6s; }
+.winner-card:nth-child(14) { animation-delay: 0.65s; }
+.winner-card:nth-child(15) { animation-delay: 0.7s; }
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .winner-avatar {
@@ -165,6 +199,7 @@
 .page-button:hover:not(:disabled) {
   background: rgba(0, 198, 255, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
 }
 
 .page-button:disabled {
@@ -194,5 +229,61 @@
 @media (max-width: 600px) {
   .winners-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nav-item {
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
+}
+
+.nav-item.active {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 198, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 198, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 198, 255, 0);
   }
 } 

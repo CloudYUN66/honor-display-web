@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 21, 41, 0.85);
+  background: rgba(42, 8, 69, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,14 +14,14 @@
 }
 
 .modal-content {
-  background: linear-gradient(135deg, #001529, #003366);
+  background: linear-gradient(135deg, #2a0845, #6441A5);
   padding: 30px;
   border-radius: 20px;
   max-width: 500px;
   width: 90%;
   position: relative;
   color: white;
-  border: 1px solid rgba(0, 198, 255, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 0 30px rgba(0, 198, 255, 0.1);
   animation: slideUp 0.3s ease;
 }
@@ -64,7 +64,7 @@
   text-align: center;
   margin: 0 0 15px 0;
   font-size: 2rem;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background: linear-gradient(45deg, #FFD700, #FFA500);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

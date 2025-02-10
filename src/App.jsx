@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
-import AwardPage from './pages/AwardPage';
 import './App.css';
 
 function App() {
@@ -104,7 +103,6 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<HomePage awards={awards} />} />
-          <Route path="/award/:id" element={<AwardPage awards={awards} />} />
         </Routes>
       </div>
     </Router>

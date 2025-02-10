@@ -1,0 +1,106 @@
+.navigation {
+  background: rgba(0, 21, 41, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 198, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 198, 255, 0.1);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 5px 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 198, 255, 0.5) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-item {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  background: rgba(0, 198, 255, 0.05);
+  border: 1px solid rgba(0, 198, 255, 0.1);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.nav-item:hover {
+  background: rgba(0, 198, 255, 0.15);
+  transform: translateY(-2px);
+  color: white;
+  border-color: rgba(0, 198, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.1);
+}
+
+.nav-item.active {
+  background: rgba(0, 198, 255, 0.2);
+  color: white;
+  border-color: rgba(0, 198, 255, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.15);
+}
+
+/* 自定义滚动条样式 */
+.nav-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+.nav-container::-webkit-scrollbar-track {
+  background: rgba(0, 21, 41, 0.2);
+  border-radius: 3px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 198, 255, 0.3);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.nav-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 198, 255, 0.5);
+}
+
+/* 添加渐变遮罩效果 */
+.navigation::before,
+.navigation::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.navigation::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0, 21, 41, 0.8), transparent);
+}
+
+.navigation::after {
+  right: 0;
+  background: linear-gradient(-90deg, rgba(0, 21, 41, 0.8), transparent);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .nav-item {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-container {
+    gap: 10px;
+    padding: 5px 15px;
+  }
+} 

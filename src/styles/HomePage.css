@@ -215,6 +215,7 @@
 .winners-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 25px;
   padding: 0;
   min-height: 400px;
@@ -332,35 +333,23 @@
 
 @media (max-width: 1200px) {
   .winners-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 0 20px;
   }
 }
 
-@media (max-width: 900px) {
-  .winners-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-  }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .winners-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 }
 
-@media (max-width: 768px) {
-  .award-title {
-    padding: 0 80px;
-    font-size: 2rem;
-  }
-
-  .award-title::before,
-  .award-title::after {
-    width: 60px;
+@media (max-width: 480px) {
+  .winners-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
   }
 }
 

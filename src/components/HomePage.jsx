@@ -6,7 +6,7 @@ import '../styles/HomePage.css';
 function HomePage({ awards }) {
   const [currentAwardId, setCurrentAwardId] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const winnersPerPage = 15; // 改回每页显示15个获奖者
+  const winnersPerPage = 15; // 确保每页显示15个
   const [selectedWinner, setSelectedWinner] = useState(null);
   
   const currentAward = awards.find(award => award.id === currentAwardId);

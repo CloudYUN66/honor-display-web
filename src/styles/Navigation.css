@@ -12,6 +12,7 @@
 
 .nav-container {
   max-width: 1400px;
+  width: 1400px; /* 固定宽度 */
   margin: 0 auto;
   display: flex;
   overflow-x: auto;
@@ -20,6 +21,14 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 198, 255, 0.5) transparent;
   -webkit-overflow-scrolling: touch;
+}
+
+/* 添加外部容器来控制居中 */
+.nav-outer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .nav-item {
@@ -102,5 +111,14 @@
   .nav-container {
     gap: 8px;
     padding: 3px 15px;
+  }
+}
+
+/* 响应式布局 */
+@media (max-width: 1440px) {
+  .nav-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 3px 20px;
   }
 } 

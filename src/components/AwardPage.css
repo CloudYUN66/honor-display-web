@@ -1,0 +1,28 @@
+.award-page {
+  padding: 20px;
+}
+
+.winners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.winner-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.winner-card:hover {
+  transform: scale(1.05);
+}
+
+.winner-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+} 

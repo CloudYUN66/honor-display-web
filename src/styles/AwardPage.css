@@ -1,0 +1,106 @@
+.award-page {
+  padding: 20px;
+}
+
+.winners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.winner-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.winner-card:hover {
+  transform: scale(1.05);
+}
+
+.winner-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.award-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+}
+
+.award-description {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.winner-avatar {
+  position: relative;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.winner-avatar::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.winner-card:hover .winner-avatar::after {
+  opacity: 1;
+}
+
+.winner-name {
+  text-align: center;
+  margin: 10px 0 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.nav-button {
+  background: rgba(0, 198, 255, 0.1);
+  border: 1px solid rgba(0, 198, 255, 0.3);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.nav-button:hover {
+  background: rgba(0, 198, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.error-message {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 50px;
+} 

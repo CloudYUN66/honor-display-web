@@ -121,9 +121,9 @@
 }
 
 .award-section {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 40px auto;
-  padding: 0 20px;
+  padding: 0;
   animation: fadeIn 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -201,6 +201,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  padding: 0 20px;
 }
 
 .award-description {
@@ -209,15 +210,16 @@
   margin-bottom: 30px;
   font-size: 1.1rem;
   animation: slideInUp 0.5s ease forwards;
+  padding: 0 20px;
 }
 
 .winners-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
-  padding: 20px;
+  gap: 25px;
+  padding: 0;
   min-height: 400px;
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 }
@@ -245,6 +247,9 @@
 .winner-card:nth-child(13) { animation-delay: 0.6s; }
 .winner-card:nth-child(14) { animation-delay: 0.65s; }
 .winner-card:nth-child(15) { animation-delay: 0.7s; }
+.winner-card:nth-child(16) { animation-delay: 0.75s; }
+.winner-card:nth-child(17) { animation-delay: 0.8s; }
+.winner-card:nth-child(18) { animation-delay: 0.85s; }
 
 @keyframes fadeInScale {
   from {
@@ -294,6 +299,7 @@
   align-items: center;
   margin-top: 30px;
   gap: 20px;
+  padding: 0 20px;
 }
 
 .page-button {
@@ -328,18 +334,22 @@
 @media (max-width: 1200px) {
   .winners-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 900px) {
   .winners-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
   }
 }
 
 @media (max-width: 600px) {
   .winners-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 }
 

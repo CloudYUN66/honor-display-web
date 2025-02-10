@@ -141,7 +141,7 @@
   animation: slideInDown 0.5s ease forwards;
   position: relative;
   display: inline-block;
-  padding: 0 80px;
+  padding: 0 120px;
 }
 
 .award-title::before,
@@ -149,25 +149,24 @@
   content: '';
   position: absolute;
   top: 50%;
-  width: 50px;
-  height: 50px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300c6ff'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
+  width: 100px;
+  height: 2px;
   opacity: 0;
   filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0.3));
 }
 
 .award-title::before {
   left: 0;
-  transform: translateY(-50%) rotate(-30deg);
+  transform: translateY(-50%);
   animation: fadeInLeft 0.5s ease forwards;
+  background: linear-gradient(to left, rgba(0, 198, 255, 1) 0%, rgba(0, 198, 255, 0) 100%);
 }
 
 .award-title::after {
   right: 0;
-  transform: translateY(-50%) rotate(30deg);
+  transform: translateY(-50%);
   animation: fadeInRight 0.5s ease forwards;
+  background: linear-gradient(to right, rgba(0, 198, 255, 1) 0%, rgba(0, 198, 255, 0) 100%);
 }
 
 @keyframes fadeInLeft {
@@ -355,14 +354,13 @@
 
 @media (max-width: 768px) {
   .award-title {
-    padding: 0 60px;
+    padding: 0 80px;
     font-size: 2rem;
   }
 
   .award-title::before,
   .award-title::after {
-    width: 40px;
-    height: 40px;
+    width: 60px;
   }
 }
 

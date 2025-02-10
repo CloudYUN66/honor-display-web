@@ -1,34 +1,25 @@
 import '../styles/WinnerModal.css';
 
 function WinnerModal({ winner, onClose }) {
+  // 阻止点击模态框内容时关闭
+  const handleContentClick = (e) => {
+    e.stopPropagation();
+  };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose}>&times;</button>
-        <div className="winner-info">
-          <div className="winner-avatar-large">
-            <img src={winner.avatar} alt={winner.name} />
-          </div>
-          <h2>{winner.name}</h2>
-          <div className="info-grid">
-            <div className="info-item">
-              <span className="label">部门：</span>
-              <span className="value">{winner.department}</span>
-            </div>
-            <div className="info-item">
-              <span className="label">职务：</span>
-              <span className="value">{winner.position}</span>
-            </div>
-            <div className="info-item">
-              <span className="label">获奖名称：</span>
-              <span className="value">{winner.awardName}</span>
-            </div>
-          </div>
-          <div className="reason-section">
-            <h3>获奖理由</h3>
-            <p>{winner.reason}</p>
-          </div>
+      <div className="modal-content" onClick={handleContentClick}>
+        <button className="modal-close" onClick={onClose}>×</button>
+        <div className="modal-avatar">
+          <img src={winner.avatar} alt={winner.name} />
         </div>
+        <h2 className="modal-name">{winner.name}</h2>
+        <p className="modal-info">{winner.department}</p>
+        <p className="modal-info">{winner.title}</p>
+        <p className="modal-award">{winner.awardName}</p>
+        {winner.description && (
+          <p className="modal-info">{winner.description}</p>
+        )}
       </div>
     </div>
   );

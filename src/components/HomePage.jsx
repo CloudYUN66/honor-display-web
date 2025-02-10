@@ -3,7 +3,8 @@ import Navigation from './Navigation';
 import WinnerModal from './WinnerModal';
 import '../styles/HomePage.css';
 
-function HomePage({ awards }) {
+function HomePage() {
+  const [awards, setAwards] = useState([]);
   const [currentAwardId, setCurrentAwardId] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [winnersPerPage, setWinnersPerPage] = useState(15);
@@ -12,6 +13,19 @@ function HomePage({ awards }) {
   
   const currentAward = awards.find(award => award.id === currentAwardId);
   
+  // 获取奖项数据
+  useEffect(() => {
+    fetch('http://localhost:3001/api/awards')
+      .then(res => res.json())
+      .then(data => {
+        setAwards(data);
+        if (data.length > 0) {
+          setCurrentAwardId(data[0].id);
+        }
+      })
+      .catch(error => console.error('Error fetching awards:', error));
+  }, []);
+
   // 计算每页显示数量
   const calculateWinnersPerPage = () => {
     if (!gridRef.current) return 15;

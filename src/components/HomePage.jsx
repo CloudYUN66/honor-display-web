@@ -75,27 +75,63 @@ function HomePage() {
 
   // 自动翻页逻辑
   useEffect(() => {
-    const timer = setInterval(() => {
-      // 如果当前页是最后一页
-      if (currentPage === totalPages) {
-        // 如果当前奖项是最后一个奖项，回到第一个奖项
-        if (currentAwardId === awards.length) {
-          setCurrentAwardId(1);
-          setCurrentPage(1);
+    const handleRotation = () => {
+      // 确保有奖项数据
+      if (!awards || awards.length === 0) return;
+      
+      // 获取当前奖项
+      const currentAward = awards.find(award => award.id === currentAwardId);
+      if (!currentAward) {
+        console.log('重置到第一个奖项');
+        setCurrentAwardId(awards[0].id);
+        setCurrentPage(1);
+        return;
+      }
+
+      // 获取当前奖项的获奖者总数和总页数
+      const totalWinners = currentAward.winners.length;
+      const maxPages = Math.ceil(totalWinners / winnersPerPage);
+      console.log(`当前页: ${currentPage}, 总页数: ${maxPages}`);
+
+      if (currentPage >= maxPages) {
+        // 获取当前奖项的索引
+        const currentIndex = awards.findIndex(award => award.id === currentAwardId);
+        console.log(`当前奖项索引: ${currentIndex}, 总奖项数: ${awards.length}`);
+        
+        if (currentIndex >= awards.length - 1) {
+          // 如果是最后一个奖项的最后一页，回到第一个奖项
+          console.log('回到第一个奖项');
+          setCurrentAwardId(awards[0].id);
         } else {
-          // 否则切换到下一个奖项
-          setCurrentAwardId(prev => prev + 1);
-          setCurrentPage(1);
+          // 切换到下一个奖项
+          console.log('切换到下一个奖项');
+          setCurrentAwardId(awards[currentIndex + 1].id);
         }
+        // 重置到第一页
+        setCurrentPage(1);
       } else {
-        // 如果不是最后一页，切换到下一页
+        // 切换到下一页
+        console.log('切换到下一页');
         setCurrentPage(prev => prev + 1);
       }
-    }, 7000); // 7秒切换一次
+    };
+
+    // 设置定时器
+    const timer = setInterval(handleRotation, 7000);
 
     // 清理定时器
     return () => clearInterval(timer);
-  }, [currentPage, totalPages, currentAwardId, awards.length]);
+  }, [currentPage, currentAwardId, awards, winnersPerPage]);
+
+  // 监听状态变化
+  useEffect(() => {
+    console.log('状态更新:', {
+      currentAwardId,
+      currentPage,
+      totalAwards: awards?.length,
+      currentAward: awards?.find(a => a.id === currentAwardId)?.name
+    });
+  }, [currentAwardId, currentPage, awards]);
 
   return (
     <div className="home-page">

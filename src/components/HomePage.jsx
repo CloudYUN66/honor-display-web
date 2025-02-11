@@ -8,7 +8,7 @@ function HomePage() {
   const [awards, setAwards] = useState([]);
   const [currentAwardId, setCurrentAwardId] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const [winnersPerPage, setWinnersPerPage] = useState(15);
+  const [winnersPerPage, setWinnersPerPage] = useState(18);
   const gridRef = useRef(null);
   const [selectedWinner, setSelectedWinner] = useState(null);
   
@@ -27,20 +27,9 @@ function HomePage() {
       .catch(error => console.error('Error fetching awards:', error));
   }, []);
 
-  // 计算每页显示数量
+  // 修改计算逻辑，固定为18个
   const calculateWinnersPerPage = () => {
-    if (!gridRef.current) return 15;
-    
-    const gridWidth = gridRef.current.offsetWidth;
-    const gridHeight = gridRef.current.offsetHeight;
-    const itemWidth = 200; // 预估的每个获奖者卡片宽度
-    const itemHeight = 200; // 预估的每个获奖者卡片高度
-    const gap = 25; // 间距
-    
-    const columns = Math.floor((gridWidth + gap) / (itemWidth + gap));
-    const rows = Math.floor((gridHeight + gap) / (itemHeight + gap));
-    
-    return Math.max(columns * rows, 1); // 确保至少显示1个
+    return 18; // 固定返回18
   };
 
   // 监听窗口大小变化
@@ -61,8 +50,8 @@ function HomePage() {
   // 计算当前页的获奖者
   const getCurrentPageWinners = () => {
     if (!currentAward) return [];
-    const startIndex = (currentPage - 1) * winnersPerPage;
-    return currentAward.winners.slice(startIndex, startIndex + winnersPerPage);
+    const startIndex = (currentPage - 1) * 18; // 使用固定值18
+    return currentAward.winners.slice(startIndex, startIndex + 18);
   };
 
   // 计算总页数
@@ -155,20 +144,12 @@ function HomePage() {
           </div>
           <p className="award-description">{currentAward.description}</p>
           
-          <div 
-            className="winners-grid" 
-            key={`${currentAwardId}-${currentPage}`}
-            ref={gridRef}
-          >
-            {getCurrentPageWinners().map((winner, index) => (
+          <div className="winners-grid" ref={gridRef}>
+            {getCurrentPageWinners().map(winner => (
               <div 
                 key={winner.id} 
                 className="winner-card"
-                style={{ animationDelay: `${index * 0.05}s` }}
-                onClick={() => setSelectedWinner({
-                  ...winner,
-                  awardName: currentAward.name
-                })}
+                onClick={() => setSelectedWinner(winner)}
               >
                 <div className="winner-avatar">
                   <img src={winner.avatar} alt={winner.name} />

@@ -51,6 +51,16 @@
   z-index: 1;
 } */
 
+/* 修改字体声明 */
+@font-face {
+  font-family: 'AlimamaShuHeiTi';
+  src: url('../assets/fonts/AlimamaShuHeiTi-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 修改主标题样式 */
 .main-title {
   text-align: center;
   font-size: 3.5rem;
@@ -59,6 +69,10 @@
   background: linear-gradient(to right, #563DFF 0%, #F500FB 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  font-family: 'AlimamaShuHeiTi', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(85, 61, 255, 0.3);
 }
 
 .awards-grid {
@@ -212,11 +226,12 @@
 
 .winners-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 25px;
   padding: 20px;
   min-height: 400px;
   width: 100%;
+  max-width: 1800px;
   margin: 0 auto;
   position: relative;
 }
@@ -339,24 +354,30 @@
   text-align: center;
 }
 
+/* 响应式布局 */
+@media (max-width: 1600px) {
+  .winners-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 @media (max-width: 1200px) {
   .winners-grid {
-    gap: 20px;
-    padding: 15px;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .winners-grid {
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .winners-grid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 }
 

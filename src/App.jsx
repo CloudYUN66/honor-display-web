@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import AwardPage from './pages/AwardPage';
+import AdminPage from './components/AdminPage';
 import './App.css';
 
 function App() {
@@ -127,6 +128,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage awards={awards} />} />
           <Route path="/award/:id" element={<AwardPage awards={awards} />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </div>
     </Router>

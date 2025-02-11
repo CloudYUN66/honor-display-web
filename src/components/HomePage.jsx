@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import WinnerModal from './WinnerModal';
 import '../styles/HomePage.css';
@@ -135,6 +136,12 @@ function HomePage() {
 
   return (
     <div className="home-page">
+      <div className="admin-entry">
+        <Link to="/admin" className="admin-button">
+          进入后台
+        </Link>
+      </div>
+
       <h1 className="main-title">2025年度荣誉风云榜</h1>
       <Navigation 
         awards={awards} 

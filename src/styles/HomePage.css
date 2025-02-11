@@ -549,4 +549,31 @@
 .award-section:nth-of-type(6n + 6) .page-button:hover:not(:disabled) {
   background: rgba(216, 160, 254, 0.2);
   box-shadow: 0 5px 15px rgba(216, 160, 254, 0.2);
+}
+
+/* 后台入口按钮样式 */
+.admin-entry {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.admin-button {
+  background: rgba(127, 57, 233, 0.1);
+  border: 1px solid rgba(127, 57, 233, 0.3);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.admin-button:hover {
+  background: rgba(127, 57, 233, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(127, 57, 233, 0.2);
 } 

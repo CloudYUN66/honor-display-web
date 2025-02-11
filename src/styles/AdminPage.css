@@ -1,0 +1,63 @@
+.admin-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.admin-section {
+  background: rgba(127, 57, 233, 0.1);
+  border: 1px solid rgba(127, 57, 233, 0.3);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.admin-section h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.admin-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-section input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(127, 57, 233, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.admin-section button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(127, 57, 233, 0.8);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-section button:hover {
+  background: rgba(127, 57, 233, 1);
+  transform: translateY(-2px);
+}
+
+.back-button {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+  background: rgba(127, 57, 233, 0.1);
+  color: white;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(127, 57, 233, 0.2);
+  transform: translateY(-2px);
+} 

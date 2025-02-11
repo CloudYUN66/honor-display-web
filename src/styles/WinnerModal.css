@@ -13,14 +13,15 @@
 }
 
 .modal-content {
-  background: rgba(116, 77, 254, 0.5);
-  padding: 30px;
+  background: rgba(116, 77, 254, 0.9);
+  padding: 40px;
   border-radius: 15px;
-  max-width: 500px;
-  width: 90%;
+  max-width: 800px;
+  width: 95%;
   position: relative;
-  border: 1px solid rgba(0, 198, 255, 0.1);
-  box-shadow: 0 0 30px rgba(0, 198, 255, 0.1);
+  border: 1px solid rgba(116, 77, 254, 0.3);
+  box-shadow: 0 0 30px rgba(116, 77, 254, 0.5),
+              0 0 50px rgba(116, 77, 254, 0.3);
   animation: modalFadeIn 0.3s ease;
 }
 
@@ -50,13 +51,13 @@
 }
 
 .modal-avatar {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 20px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 30px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid rgba(0, 198, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
+  border: 3px solid #d8a0fe;
+  box-shadow: 0 0 20px rgba(216, 160, 254, 0.5);
   position: relative;
   background: rgba(0, 21, 41, 0.2);
 }
@@ -72,6 +73,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* 添加悬停效果 */
+.modal-avatar:hover {
+  border-color: #d8a0fe;
+  box-shadow: 0 0 30px rgba(216, 160, 254, 0.7);
 }
 
 .modal-name {
@@ -108,8 +115,32 @@
   }
 }
 
-/* 响应式调整 */
+/* 响应式布局 */
+@media (max-width: 1024px) {
+  .modal-content {
+    max-width: 600px;
+    padding: 30px;
+  }
+  
+  .modal-avatar {
+    width: 180px;
+    height: 180px;
+  }
+}
+
 @media (max-width: 768px) {
+  .modal-content {
+    max-width: 90%;
+    padding: 25px;
+  }
+  
+  .modal-avatar {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
   .modal-content {
     width: 95%;
     padding: 20px;
@@ -118,13 +149,5 @@
   .modal-avatar {
     width: 120px;
     height: 120px;
-  }
-  
-  .modal-name {
-    font-size: 1.5rem;
-  }
-  
-  .modal-info {
-    font-size: 1rem;
   }
 } 

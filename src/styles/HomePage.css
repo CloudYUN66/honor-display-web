@@ -266,7 +266,7 @@
   margin: 0 auto 15px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid rgba(0, 198, 255, 0.3);
+  border: 3px solid rgba(216, 160, 254, 0.3);
   transition: all 0.3s ease;
   position: relative;
   background: rgba(0, 21, 41, 0.2);
@@ -290,8 +290,8 @@
 }
 
 .winner-card:hover .winner-avatar {
-  border-color: rgba(0, 198, 255, 0.8);
-  box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+  border-color: #d8a0fe;
+  box-shadow: 0 0 20px rgba(216, 160, 254, 0.5);
 }
 
 .winner-name {

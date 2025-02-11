@@ -117,7 +117,7 @@ function HomePage() {
     };
 
     // 设置定时器
-    const timer = setInterval(handleRotation, 7000);
+    const timer = setInterval(handleRotation, 70000);
 
     // 清理定时器
     return () => clearInterval(timer);

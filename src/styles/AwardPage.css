@@ -25,6 +25,8 @@
   width: 100%;
   height: auto;
   border-radius: 50%;
+  border: 2px solid #d8a0fe;
+  box-shadow: 0 0 15px rgba(216, 160, 254, 0.3);
 }
 
 .award-title {
@@ -59,7 +61,7 @@
   right: -5px;
   bottom: -5px;
   border-radius: 50%;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: -1;

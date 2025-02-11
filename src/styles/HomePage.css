@@ -132,10 +132,10 @@
   font-size: 2.5rem;
   margin-bottom: 10px;
   color: transparent;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background: linear-gradient(45deg, #ff7a95, #ffb696);
   -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+  text-shadow: 0 0 20px rgba(255, 122, 149, 0.3);
   animation: slideInDown 0.5s ease forwards;
   position: relative;
   display: inline-block;
@@ -465,4 +465,25 @@
   100% {
     transform: rotate(45deg) translateX(100%);
   }
+}
+
+/* 根据当前奖项序号动态改变颜色 */
+.award-title:nth-of-type(6n + 2) {
+  background: linear-gradient(45deg, #6385e4, #2555de);
+}
+
+.award-title:nth-of-type(6n + 3) {
+  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
+}
+
+.award-title:nth-of-type(6n + 4) {
+  background: linear-gradient(45deg, #ffd477, #ff902d);
+}
+
+.award-title:nth-of-type(6n + 5) {
+  background: linear-gradient(45deg, #4ebcc9, #b4ece9);
+}
+
+.award-title:nth-of-type(6n + 6) {
+  background: linear-gradient(45deg, #ff9ce3, #dc27ec);
 } 

@@ -56,10 +56,9 @@
   font-size: 3.5rem;
   margin-bottom: 50px;
   color: transparent;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background: linear-gradient(to right, #563DFF 0%, #F500FB 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
 .awards-grid {

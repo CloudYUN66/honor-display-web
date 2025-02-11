@@ -309,9 +309,10 @@
   padding: 0 20px;
 }
 
+/* 基础按钮样式 */
 .page-button {
-  background: rgba(0, 198, 255, 0.1);
-  border: 1px solid rgba(0, 198, 255, 0.3);
+  background: rgba(127, 57, 233, 0.1);  /* 紫色背景 */
+  border: 1px solid rgba(127, 57, 233, 0.3);
   color: white;
   padding: 8px 20px;
   border-radius: 20px;
@@ -321,9 +322,9 @@
 }
 
 .page-button:hover:not(:disabled) {
-  background: rgba(0, 198, 255, 0.2);
+  background: rgba(127, 57, 233, 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(127, 57, 233, 0.2);
 }
 
 .page-button:disabled {
@@ -486,4 +487,66 @@
 
 .award-title:nth-of-type(6n + 6) {
   background: linear-gradient(45deg, #ff9ce3, #dc27ec);
+}
+
+/* 根据奖项序号动态改变按钮颜色 */
+.award-section:nth-of-type(6n + 1) .page-button {
+  background: rgba(127, 57, 233, 0.1);
+  border-color: rgba(127, 57, 233, 0.3);
+}
+
+.award-section:nth-of-type(6n + 2) .page-button {
+  background: rgba(116, 77, 254, 0.1);
+  border-color: rgba(116, 77, 254, 0.3);
+}
+
+.award-section:nth-of-type(6n + 3) .page-button {
+  background: rgba(216, 160, 254, 0.1);
+  border-color: rgba(216, 160, 254, 0.3);
+}
+
+.award-section:nth-of-type(6n + 4) .page-button {
+  background: rgba(127, 57, 233, 0.1);
+  border-color: rgba(127, 57, 233, 0.3);
+}
+
+.award-section:nth-of-type(6n + 5) .page-button {
+  background: rgba(116, 77, 254, 0.1);
+  border-color: rgba(116, 77, 254, 0.3);
+}
+
+.award-section:nth-of-type(6n + 6) .page-button {
+  background: rgba(216, 160, 254, 0.1);
+  border-color: rgba(216, 160, 254, 0.3);
+}
+
+/* 悬停效果 */
+.award-section:nth-of-type(6n + 1) .page-button:hover:not(:disabled) {
+  background: rgba(127, 57, 233, 0.2);
+  box-shadow: 0 5px 15px rgba(127, 57, 233, 0.2);
+}
+
+.award-section:nth-of-type(6n + 2) .page-button:hover:not(:disabled) {
+  background: rgba(116, 77, 254, 0.2);
+  box-shadow: 0 5px 15px rgba(116, 77, 254, 0.2);
+}
+
+.award-section:nth-of-type(6n + 3) .page-button:hover:not(:disabled) {
+  background: rgba(216, 160, 254, 0.2);
+  box-shadow: 0 5px 15px rgba(216, 160, 254, 0.2);
+}
+
+.award-section:nth-of-type(6n + 4) .page-button:hover:not(:disabled) {
+  background: rgba(127, 57, 233, 0.2);
+  box-shadow: 0 5px 15px rgba(127, 57, 233, 0.2);
+}
+
+.award-section:nth-of-type(6n + 5) .page-button:hover:not(:disabled) {
+  background: rgba(116, 77, 254, 0.2);
+  box-shadow: 0 5px 15px rgba(116, 77, 254, 0.2);
+}
+
+.award-section:nth-of-type(6n + 6) .page-button:hover:not(:disabled) {
+  background: rgba(216, 160, 254, 0.2);
+  box-shadow: 0 5px 15px rgba(216, 160, 254, 0.2);
 } 

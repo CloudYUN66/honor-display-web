@@ -115,19 +115,12 @@ function App() {
 
   return (
     <Router>
-      <div className="video-background">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          style={{ display: 'block' }}
-        >
-          <source src="/videos/wangzhanbeijing.mp4" type="video/mp4" />
-          您的浏览器不支持视频播放。
-        </video>
-        <div className="video-overlay"></div>
+      <div className="background-container">
+        <img 
+          src="/images/wangzhanbeijing3.jpg" 
+          alt="background" 
+          className="background-image"
+        />
       </div>
 
       <div className="app">

@@ -1,6 +1,5 @@
 .navigation {
-  background: rgba(0, 21, 41, 0.4);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.3);
   padding: 10px 0;
   position: sticky;
   top: 0;
@@ -10,21 +9,13 @@
   border-bottom: 1px solid rgba(0, 198, 255, 0.1);
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
+  margin: 0 20px;
 }
 
-/* 科技感背景效果 */
+/* 移除之前的科技感背景效果 */
 .navigation::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(90deg, transparent 0%, rgba(0, 198, 255, 0.03) 50%, transparent 100%),
-    radial-gradient(circle at 50% 50%, rgba(0, 198, 255, 0.05) 0%, transparent 50%);
-  animation: scanline 3s linear infinite;
-  pointer-events: none;
+  display: none;
 }
 
 .nav-outer-container {
@@ -46,83 +37,112 @@
 }
 
 .nav-item {
-  color: rgba(255, 255, 255, 0.85);
+  color: white;
   text-decoration: none;
   padding: 8px 20px;
   border-radius: 4px;
   white-space: nowrap;
   transition: all 0.3s ease;
-  background: rgba(0, 198, 255, 0.05);
-  border: 1px solid rgba(0, 198, 255, 0.1);
+  border: none;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
   text-align: center;
-  flex: 0 0 auto; /* 移除 flex: 1，使按钮宽度适应内容 */
-  min-width: max-content; /* 确保内容不会被截断 */
+  flex: 0 0 auto;
+  min-width: max-content;
 }
 
-/* 按钮悬停效果 */
-.nav-item::before {
+/* 渐变色样式 */
+.nav-item:nth-child(6n + 1) {
+  background: linear-gradient(45deg, #ff7a95, #ffb696);
+}
+
+.nav-item:nth-child(6n + 2) {
+  background: linear-gradient(45deg, #6385e4, #2555de);
+}
+
+.nav-item:nth-child(6n + 3) {
+  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
+}
+
+.nav-item:nth-child(6n + 4) {
+  background: linear-gradient(45deg, #ffd477, #ff902d);
+}
+
+.nav-item:nth-child(6n + 5) {
+  background: linear-gradient(45deg, #4ebcc9, #b4ece9);
+}
+
+.nav-item:nth-child(6n + 6) {
+  background: linear-gradient(45deg, #ff9ce3, #dc27ec);
+}
+
+/* 悬停效果 */
+.nav-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+/* 激活状态 */
+.nav-item.active {
+  opacity: 1;
+  transform: scale(1.15);  /* 增加放大比例 */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* 增强发光效果 */
+.nav-item.active::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 198, 255, 0.1),
-    transparent
-  );
-  transition: 0.5s;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: inherit;
+  filter: blur(15px);
+  opacity: 0.9;
+  z-index: -1;
+  border-radius: 8px;
+  animation: glowPulse 2s ease-in-out infinite alternate;
 }
 
-.nav-item:hover {
-  background: rgba(0, 198, 255, 0.15);
-  transform: translateY(-2px);
-  color: white;
-  border-color: rgba(0, 198, 255, 0.3);
-  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.1),
-              inset 0 0 5px rgba(0, 198, 255, 0.2);
-}
-
-.nav-item.active {
-  background: rgba(0, 198, 255, 0.2);
-  color: white;
-  border-color: rgba(0, 198, 255, 0.4);
-  box-shadow: 0 5px 15px rgba(0, 198, 255, 0.15),
-              inset 0 0 10px rgba(0, 198, 255, 0.3);
-  position: relative;
-}
-
-/* 激活状态的动态边框效果 */
+/* 添加第二层发光 */
 .nav-item.active::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid rgba(0, 198, 255, 0.4);
-  border-radius: 4px;
-  animation: borderPulse 2s infinite;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0.7;
+  z-index: -2;
+  border-radius: 6px;
+  animation: glowPulse 1.5s ease-in-out infinite alternate-reverse;
 }
 
-@keyframes borderPulse {
+/* 增强发光动画 */
+@keyframes glowPulse {
   0% {
-    transform: scale(1);
-    opacity: 1;
+    opacity: 0.6;
+    filter: blur(15px);
+    transform: scale(0.95);
   }
   50% {
-    transform: scale(1.05);
-    opacity: 0.5;
+    opacity: 0.8;
+    filter: blur(20px);
+    transform: scale(1);
   }
   100% {
-    transform: scale(1);
     opacity: 1;
+    filter: blur(25px);
+    transform: scale(1.05);
   }
 }
 

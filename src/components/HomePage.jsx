@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import WinnerModal from './WinnerModal';
 import '../styles/HomePage.css';
+import awardDescriptions from '../data/awardDescriptions';
 
 function HomePage() {
   const [awards, setAwards] = useState([]);
@@ -142,7 +143,9 @@ function HomePage() {
           <div className="award-title-container">
             <h2 className="award-title">{currentAward.name}</h2>
           </div>
-          <p className="award-description">{currentAward.description}</p>
+          <p className="award-description">
+            {awardDescriptions[currentAward.name] || ''}
+          </p>
           
           <div className="winners-grid" ref={gridRef}>
             {getCurrentPageWinners().map(winner => (

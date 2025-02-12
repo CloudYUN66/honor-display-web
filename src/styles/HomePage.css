@@ -1,7 +1,7 @@
 .home-page {
   min-height: 100vh;
   position: relative;
-  padding: 40px 20px;
+  padding: 2vh 2vw;
   overflow: hidden;
 }
 
@@ -63,15 +63,15 @@
 /* 修改主标题样式 */
 .main-title {
   text-align: center;
-  font-size: 3.5rem;
-  margin-bottom: 50px;
+  font-size: 3.5vw;
+  margin-bottom: 3vh;
   color: transparent;
-  background: linear-gradient(to right, #563DFF 0%, #F500FB 100%);
+  background: linear-gradient(to right, #FF00E5, #963DFF);  /* AI Family 的粉紫渐变色 */
   -webkit-background-clip: text;
   background-clip: text;
   font-family: 'AlimamaShuHeiTi', sans-serif;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 0.2vw;
   text-shadow: 0 0 20px rgba(85, 61, 255, 0.3);
 }
 
@@ -143,8 +143,8 @@
 
 .award-title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 2.5vw;
+  margin: 2vh 0;
   color: transparent;
   background: linear-gradient(45deg, #ff7a95, #ffb696);
   -webkit-background-clip: text;
@@ -226,23 +226,19 @@
 
 .winners-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 25px;
-  padding: 20px;
-  min-height: 400px;
-  width: 100%;
-  max-width: 1800px;
+  grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
+  gap: 2vw;
+  padding: 2vh 2vw;
+  max-width: 90vw;
   margin: 0 auto;
-  position: relative;
 }
 
 .winner-card {
-  aspect-ratio: 1;
-  text-align: center;
-  transition: all 0.5s ease;
-  animation: fadeInScale 0.5s ease forwards;
-  opacity: 0;
-  transform: scale(0.8);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1vw;
+  padding: 1.5vw;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .winner-card:nth-child(1) { animation-delay: 0s; }
@@ -276,28 +272,18 @@
 }
 
 .winner-avatar {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 15px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid rgba(216, 160, 254, 0.3);
-  transition: all 0.3s ease;
+  width: 100%;
+  padding-bottom: 100%; /* 保持1:1比例 */
   position: relative;
-  background: rgba(0, 21, 41, 0.2);
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .winner-avatar img {
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  object-position: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .winner-card:hover {
@@ -310,18 +296,17 @@
 }
 
 .winner-name {
+  font-size: 1.2vw;
+  margin-top: 1vh;
+  text-align: center;
   color: white;
-  font-size: 1.1rem;
-  margin: 0;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  gap: 20px;
-  padding: 0 20px;
+  gap: 2vw;
+  margin-top: 3vh;
 }
 
 /* 基础按钮样式 */
@@ -329,11 +314,11 @@
   background: rgba(127, 57, 233, 0.1);  /* 紫色背景 */
   border: 1px solid rgba(127, 57, 233, 0.3);
   color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
+  padding: 1vh 2vw;
+  border-radius: 0.5vw;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: 1.2vw;
 }
 
 .page-button:hover:not(:disabled) {
@@ -349,7 +334,7 @@
 
 .page-info {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  font-size: 1.2vw;
   min-width: 80px;
   text-align: center;
 }
@@ -575,8 +560,8 @@
 /* 后台入口按钮样式 */
 .admin-entry {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 2vh;
+  right: 2vw;
   z-index: 1000;
 }
 
@@ -584,11 +569,11 @@
   background: rgba(127, 57, 233, 0.1);
   border: 1px solid rgba(127, 57, 233, 0.3);
   color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
+  padding: 1vh 2vw;
+  border-radius: 2vw;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: 1.2vw;
   text-decoration: none;
   display: inline-block;
 }

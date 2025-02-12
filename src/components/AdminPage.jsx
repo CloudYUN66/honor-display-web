@@ -9,7 +9,7 @@ function AdminPage() {
   const handleTitleChange = async (e) => {
     e.preventDefault();
     try {
-      await fetch('http://localhost:3001/api/update-title', {
+      await fetch('http://192.168.20.47:3001/api/update-title', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function AdminPage() {
     formData.append('file', file);
 
     try {
-      await fetch('http://localhost:3001/api/import-winners', {
+      await fetch('http://192.168.20.47:3001/api/import-winners', {
         method: 'POST',
         body: formData,
       });

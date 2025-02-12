@@ -1,19 +1,20 @@
 .navigation {
-  background: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(
+    to right,
+    rgba(127, 57, 233, 0.1) 0%,
+    rgba(127, 57, 233, 0.3) 50%,
+    rgba(127, 57, 233, 0.1) 100%
+  );
   padding: 10px 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid rgba(0, 198, 255, 0.1);
-  border-bottom: 1px solid rgba(0, 198, 255, 0.1);
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
   margin: 0 20px;
 }
 
-/* 移除之前的科技感背景效果 */
+/* 移除顶部虚线 */
 .navigation::before {
   display: none;
 }
@@ -28,19 +29,19 @@
   width: 1400px;
   margin: 0 auto;
   display: flex;
-  justify-content: center; /* 改为居中对齐 */
+  justify-content: center;
   align-items: center;
   padding: 3px 20px;
   position: relative;
   flex-wrap: nowrap;
-  gap: 15px; /* 添加固定间距 */
+  gap: 15px;
 }
 
 .nav-item {
   color: white;
   text-decoration: none;
   padding: 8px 20px;
-  border-radius: 4px;
+  border-radius: 999px;  /* 使用大值确保最大圆角 */
   white-space: nowrap;
   transition: all 0.3s ease;
   border: none;
@@ -53,29 +54,17 @@
   min-width: max-content;
 }
 
-/* 渐变色样式 */
-.nav-item:nth-child(6n + 1) {
+/* 渐变色样式 - 三种颜色循环 */
+.nav-item:nth-child(3n + 1) {
   background: linear-gradient(45deg, #ff7a95, #ffb696);
 }
 
-.nav-item:nth-child(6n + 2) {
-  background: linear-gradient(45deg, #6385e4, #2555de);
-}
-
-.nav-item:nth-child(6n + 3) {
-  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
-}
-
-.nav-item:nth-child(6n + 4) {
-  background: linear-gradient(45deg, #ffd477, #ff902d);
-}
-
-.nav-item:nth-child(6n + 5) {
+.nav-item:nth-child(3n + 2) {
   background: linear-gradient(45deg, #4ebcc9, #b4ece9);
 }
 
-.nav-item:nth-child(6n + 6) {
-  background: linear-gradient(45deg, #ff9ce3, #dc27ec);
+.nav-item:nth-child(3n + 3) {
+  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
 }
 
 /* 悬停效果 */
@@ -88,14 +77,26 @@
 /* 激活状态 */
 .nav-item.active {
   opacity: 1;
-  transform: scale(1.15);  /* 增加放大比例 */
+  transform: scale(1.15);
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 2;
   transition: all 0.3s ease;
+  margin: 0 8px;
+  font-weight: bold;  /* 添加文字加粗 */
 }
 
-/* 增强发光效果 */
+/* 激活按钮前面的按钮 */
+.nav-item.active + .nav-item {
+  margin-left: 8px;  /* 减少到8px */
+}
+
+/* 激活按钮后面的按钮 */
+.nav-item:has(+ .nav-item.active) {
+  margin-right: 8px;  /* 减少到8px */
+}
+
+/* 修改发光效果的圆角 */
 .nav-item.active::before {
   content: '';
   position: absolute;
@@ -107,7 +108,7 @@
   filter: blur(15px);
   opacity: 0.9;
   z-index: -1;
-  border-radius: 8px;
+  border-radius: 999px;
   animation: glowPulse 2s ease-in-out infinite alternate;
 }
 
@@ -123,7 +124,7 @@
   filter: blur(8px);
   opacity: 0.7;
   z-index: -2;
-  border-radius: 6px;
+  border-radius: 999px;
   animation: glowPulse 1.5s ease-in-out infinite alternate-reverse;
 }
 

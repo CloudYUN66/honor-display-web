@@ -24,8 +24,8 @@
 .winner-card img {
   width: 100%;
   height: auto;
-  border-radius: 50%;
-  border: 2px solid #d8a0fe;
+  /* border-radius: 50%; */
+  /* border: 2px solid #d8a0fe; */
   box-shadow: 0 0 15px rgba(216, 160, 254, 0.3);
 }
 

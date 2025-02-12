@@ -124,6 +124,8 @@ function HomePage() {
     });
   }, [currentAwardId, currentPage, awards]);
 
+  const currentPageWinners = getCurrentPageWinners();
+
   return (
     <div className="home-page">
       <div className="admin-entry">
@@ -147,8 +149,12 @@ function HomePage() {
             {awardDescriptions[currentAward.name] || ''}
           </p>
           
-          <div className="winners-grid" ref={gridRef}>
-            {getCurrentPageWinners().map(winner => (
+          <div 
+            className="winners-grid" 
+            ref={gridRef}
+            data-count={currentPageWinners.length <= 6 ? currentPageWinners.length : 6}
+          >
+            {currentPageWinners.map(winner => (
               <div 
                 key={winner.id} 
                 className="winner-card"

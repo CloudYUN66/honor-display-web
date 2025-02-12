@@ -5,11 +5,12 @@ import '../styles/AdminPage.css';
 function AdminPage() {
   const [mainTitle, setMainTitle] = useState('2025年度荣誉风云榜');
   const [file, setFile] = useState(null);
+  const [importing, setImporting] = useState(false);
 
   const handleTitleChange = async (e) => {
     e.preventDefault();
     try {
-      await fetch('http://192.168.20.47:3001/api/update-title', {
+      await fetch('http://192.168.20.47:/api/update-title', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,6 +43,26 @@ function AdminPage() {
     }
   };
 
+  const handleImportData = async () => {
+    try {
+      setImporting(true);
+      const response = await fetch('http://192.168.20.47:3001/api/import-data', {
+        method: 'POST',
+      });
+      
+      if (response.ok) {
+        alert('数据导入成功！');
+      } else {
+        throw new Error('导入失败');
+      }
+    } catch (error) {
+      console.error('Error importing data:', error);
+      alert('导入失败，请重试');
+    } finally {
+      setImporting(false);
+    }
+  };
+
   return (
     <div className="admin-page">
       <h1>后台管理</h1>
@@ -69,6 +90,17 @@ function AdminPage() {
           />
           <button type="submit">导入数据</button>
         </form>
+      </section>
+
+      <section className="admin-section">
+        <h2>导入JSON数据</h2>
+        <button 
+          className="import-button"
+          onClick={handleImportData}
+          disabled={importing}
+        >
+          {importing ? '导入中...' : '导入数据'}
+        </button>
       </section>
 
       <Link to="/" className="back-button">

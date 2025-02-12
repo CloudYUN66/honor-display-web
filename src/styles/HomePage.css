@@ -608,4 +608,87 @@
   background: rgba(127, 57, 233, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(127, 57, 233, 0.2);
+}
+
+/* 弹出窗口样式 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(127, 57, 233, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid rgba(127, 57, 233, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(127, 57, 233, 0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: white;
+  border: none;
+  color: #7f39e9;  /* 紫色图标 */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.winner-details {
+  color: white;
+  text-align: center;
+}
+
+.winner-details img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid rgba(127, 57, 233, 0.5);
+  box-shadow: 0 0 20px rgba(127, 57, 233, 0.3);
+}
+
+.winner-details h2 {
+  font-size: 24px;
+  margin: 10px 0;
+  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.winner-details p {
+  margin: 10px 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 1.5;
 } 

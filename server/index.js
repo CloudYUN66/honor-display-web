@@ -82,7 +82,8 @@ app.get('/api/awards', (req, res) => {
         id: award.id,
         userId: award.userId,
         name: award.username,
-        avatar: award.avatar || '/default-avatar.png',  // 使用用户表中的头像
+        avatar: award.avatar || '/default-avatar.png',  // 使用用户表中的头像、
+        awardName: award.titleName,
         department: award.userDepartment || award.departmentName, // 优先使用用户表中的部门
         title: award.position || '',
         description: award.awardDesc || ''

@@ -25,7 +25,7 @@ function AwardPage({ awards }) {
     const timer = setInterval(() => {
       const nextId = (parseInt(id) % awards.length) + 1;
       navigate(`/award/${nextId}`);
-    }, 7000);
+    }, 70000);
 
     return () => clearInterval(timer);
   }, [id, awards, navigate]);

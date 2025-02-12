@@ -1,88 +1,100 @@
-.modal-overlay {
+.winner-modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(0.5vw);
+  z-index: 1000;
 }
 
-.modal-content {
-  width: 60vw;
-  max-height: 80vh;
-  padding: 3vw;
-  border-radius: 1vw;
-  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
+.winner-modal-content {
+  background: rgba(255, 255, 255, 0.8);  /* 半透明白色背景 */
+  backdrop-filter: blur(10px);  /* 毛玻璃效果 */
+  -webkit-backdrop-filter: blur(10px);  /* Safari 支持 */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 90%;
   position: relative;
+  color: #333;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);  /* 添加阴影效果 */
 }
 
-.modal-close {
+.winner-modal-close-button {
   position: absolute;
-  top: 1vh;
-  right: 1vw;
-  font-size: 1.5vw;
-  width: 2.5vw;
-  height: 2.5vw;
-  background: none;
+  right: 10px;
+  top: 10px;
   border: none;
-  color: white;
+  background: none;
+  font-size: 24px;
   cursor: pointer;
 }
 
-.modal-info-container {
-  text-align: center;
-  color: white;
+.winner-modal-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
 }
 
-.modal-name {
-  font-size: 2vw;
-  margin-bottom: 2vh;
+.winner-modal-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.modal-info {
-  font-size: 1.2vw;
-  margin: 1vh 0;
-  color: rgba(255, 255, 255, 0.9);
+.winner-modal-details {
+  flex: 1;
 }
 
-.modal-description {
-  font-size: 1.2vw;
-  line-height: 1.6;
-  margin-top: 2vh;
-  color: rgba(255, 255, 255, 0.8);
-  white-space: pre-line;
+.winner-modal-name {
   text-align: left;
+  margin: 0 0 15px 0;
+  font-size: 24px;
+}
+
+.winner-modal-department,
+.winner-modal-position,
+.winner-modal-award-name,
+.winner-modal-reason {
+  margin: 8px 0;
 }
 
 /* 响应式布局 */
 @media (max-width: 1024px) {
-  .modal-content {
+  .winner-modal-content {
     max-width: 600px;
     padding: 30px;
   }
 }
 
 @media (max-width: 768px) {
-  .modal-content {
+  .winner-modal-content {
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding: 30px;
   }
 
-  .modal-info-container {
+  .winner-modal-info {
     align-items: center;
   }
 
-  .modal-name,
-  .modal-info,
-  .modal-description {
+  .winner-modal-name,
+  .winner-modal-department,
+  .winner-modal-position,
+  .winner-modal-award-name,
+  .winner-modal-reason {
     text-align: center;
   }
 }
 
 @media (max-width: 480px) {
-  .modal-content {
+  .winner-modal-content {
     width: 95%;
     padding: 20px;
   }

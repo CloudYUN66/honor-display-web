@@ -252,25 +252,30 @@
   justify-content: center;
 }
 
-/* 根据获奖人数自动调整列数 */
+/* 根据获奖人数自动调整列数和居中显示 */
 .winners-grid[data-count="1"] {
-  grid-template-columns: minmax(15vw, 1fr);
+  grid-template-columns: minmax(10vw, 1fr);  /* 减小最小宽度 */
+  max-width: 15vw;  /* 减小最大宽度 */
 }
 
 .winners-grid[data-count="2"] {
-  grid-template-columns: repeat(2, minmax(15vw, 1fr));
+  grid-template-columns: repeat(2, minmax(12vw, 1fr));
+  max-width: 35vw;
 }
 
 .winners-grid[data-count="3"] {
-  grid-template-columns: repeat(3, minmax(15vw, 1fr));
+  grid-template-columns: repeat(3, minmax(13vw, 1fr));
+  max-width: 55vw;
 }
 
 .winners-grid[data-count="4"] {
-  grid-template-columns: repeat(4, minmax(15vw, 1fr));
+  grid-template-columns: repeat(4, minmax(14vw, 1fr));
+  max-width: 70vw;
 }
 
 .winners-grid[data-count="5"] {
   grid-template-columns: repeat(5, minmax(15vw, 1fr));
+  max-width: 80vw;
 }
 
 .winner-card {

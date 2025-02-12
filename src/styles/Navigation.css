@@ -1,9 +1,9 @@
 .navigation {
   background: linear-gradient(
     to right,
-    rgba(127, 57, 233, 0.1) 0%,
-    rgba(127, 57, 233, 0.3) 50%,
-    rgba(127, 57, 233, 0.1) 100%
+    rgba(127, 57, 233, 0) 0%,    /* 完全透明 */
+    rgba(127, 57, 233, 0.3) 50%,  /* 保持中间不变 */
+    rgba(127, 57, 233, 0) 100%    /* 完全透明 */
   );
   padding: 10px 0;
   position: sticky;
@@ -83,7 +83,7 @@
   z-index: 2;
   transition: all 0.3s ease;
   margin: 0 8px;
-  font-weight: bold;  /* 添加文字加粗 */
+  font-weight: bold;
 }
 
 /* 激活按钮前面的按钮 */
@@ -96,54 +96,18 @@
   margin-right: 8px;  /* 减少到8px */
 }
 
-/* 修改发光效果的圆角 */
-.nav-item.active::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  background: inherit;
-  filter: blur(15px);
-  opacity: 0.9;
-  z-index: -1;
-  border-radius: 999px;
-  animation: glowPulse 2s ease-in-out infinite alternate;
-}
-
-/* 添加第二层发光 */
+/* 移除发光效果 */
+.nav-item.active::before,
 .nav-item.active::after {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: inherit;
-  filter: blur(8px);
-  opacity: 0.7;
-  z-index: -2;
-  border-radius: 999px;
-  animation: glowPulse 1.5s ease-in-out infinite alternate-reverse;
+  display: none;
 }
 
-/* 增强发光动画 */
+/* 移除发光动画 */
 @keyframes glowPulse {
-  0% {
-    opacity: 0.6;
-    filter: blur(15px);
-    transform: scale(0.95);
-  }
-  50% {
-    opacity: 0.8;
-    filter: blur(20px);
-    transform: scale(1);
-  }
-  100% {
+  0%, 50%, 100% {
     opacity: 1;
-    filter: blur(25px);
-    transform: scale(1.05);
+    filter: none;
+    transform: none;
   }
 }
 

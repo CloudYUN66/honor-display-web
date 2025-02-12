@@ -149,7 +149,6 @@
   background: linear-gradient(45deg, #ff7a95, #ffb696);
   -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: 0 0 20px rgba(255, 122, 149, 0.3);
   animation: slideInDown 0.5s ease forwards;
   position: relative;
   display: inline-block;
@@ -163,22 +162,19 @@
   top: 50%;
   width: 100px;
   height: 2px;
-  opacity: 0;
-  filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0.3));
+  opacity: 1;
 }
 
 .award-title::before {
   left: 0;
   transform: translateY(-50%);
-  animation: fadeInLeft 0.5s ease forwards;
-  background: linear-gradient(to left, rgba(0, 198, 255, 1) 0%, rgba(0, 198, 255, 0) 100%);
+  background: linear-gradient(to left, #7257f4, transparent);
 }
 
 .award-title::after {
   right: 0;
   transform: translateY(-50%);
-  animation: fadeInRight 0.5s ease forwards;
-  background: linear-gradient(to right, rgba(0, 198, 255, 1) 0%, rgba(0, 198, 255, 0) 100%);
+  background: linear-gradient(to right, #7257f4, transparent);
 }
 
 @keyframes fadeInLeft {
@@ -222,6 +218,7 @@
   font-size: 1.1rem;
   animation: slideInUp 0.5s ease forwards;
   padding: 0 20px;
+  text-shadow: 0 0 10px rgba(134, 72, 255, 1);
 }
 
 .winners-grid {
@@ -305,20 +302,36 @@
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2vw;
   margin-top: 3vh;
 }
 
-/* 基础按钮样式 */
+/* 页码样式 */
+.page-info {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2vw;
+  min-width: 80px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* 按钮样式 */
 .page-button {
-  background: rgba(127, 57, 233, 0.1);  /* 紫色背景 */
+  background: rgba(127, 57, 233, 0.1);
   border: 1px solid rgba(127, 57, 233, 0.3);
   color: white;
   padding: 1vh 2vw;
-  border-radius: 0.5vw;
+  border-radius: 999px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1.2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-button:hover:not(:disabled) {
@@ -330,13 +343,6 @@
 .page-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.page-info {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.2vw;
-  min-width: 80px;
-  text-align: center;
 }
 
 /* 响应式布局 */

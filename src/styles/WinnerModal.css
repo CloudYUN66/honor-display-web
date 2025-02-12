@@ -12,14 +12,26 @@
   max-height: 80vh;
   padding: 3vw;
   border-radius: 1vw;
-  display: flex;
-  gap: 3vw;
+  background: linear-gradient(45deg, #7f39e9, #d8a0fe);
+  position: relative;
 }
 
-.modal-avatar {
-  width: 20vw;
-  height: 20vw;
-  border-radius: 50%;
+.modal-close {
+  position: absolute;
+  top: 1vh;
+  right: 1vw;
+  font-size: 1.5vw;
+  width: 2.5vw;
+  height: 2.5vw;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-info-container {
+  text-align: center;
+  color: white;
 }
 
 .modal-name {
@@ -30,59 +42,16 @@
 .modal-info {
   font-size: 1.2vw;
   margin: 1vh 0;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.modal-close {
-  position: absolute;
-  top: 1vh;
-  right: 1vw;
-  font-size: 1.5vw;
-  width: 2.5vw;
-  height: 2.5vw;
-}
-
-.modal-avatar img {
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  object-position: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* 添加悬停效果 */
-.modal-avatar:hover {
-  border-color: #d8a0fe;
-  box-shadow: 0 0 30px rgba(216, 160, 254, 0.7);
-}
-
-.modal-name,
-.modal-info,
-.modal-award {
-  font-family: "PingFang SC", "SF Pro SC", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
-
-.modal-award {
+.modal-description {
+  font-size: 1.2vw;
+  line-height: 1.6;
+  margin-top: 2vh;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: pre-line;
   text-align: left;
-  color: rgba(0, 198, 255, 0.9);
-  margin: 10px 0;
-  font-size: 1.2rem;
-  font-weight: 600;  /* 略重一点 */
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 /* 响应式布局 */
@@ -90,11 +59,6 @@
   .modal-content {
     max-width: 600px;
     padding: 30px;
-  }
-  
-  .modal-avatar {
-    width: 180px;
-    height: 180px;
   }
 }
 
@@ -112,13 +76,8 @@
 
   .modal-name,
   .modal-info,
-  .modal-award {
+  .modal-description {
     text-align: center;
-  }
-
-  .modal-avatar {
-    width: 150px;
-    height: 150px;
   }
 }
 
@@ -126,10 +85,5 @@
   .modal-content {
     width: 95%;
     padding: 20px;
-  }
-  
-  .modal-avatar {
-    width: 120px;
-    height: 120px;
   }
 } 

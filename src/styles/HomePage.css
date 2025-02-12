@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'PingFang SC';
+  src: local('PingFang SC');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 全局字体设置 */
+* {
+  font-family: "PingFang SC", "SF Pro SC", "Microsoft YaHei", "微软雅黑", system-ui, -apple-system, sans-serif;
+  font-weight: 500; /* 中等字重 */
+}
+
 .home-page {
   min-height: 100vh;
   position: relative;
@@ -153,6 +166,8 @@
   position: relative;
   display: inline-block;
   padding: 0 120px;
+  font-family: 'AlimamaShuHeiTi', sans-serif;
+  font-weight: bold;
 }
 
 .award-title::before,
@@ -219,6 +234,8 @@
   animation: slideInUp 0.5s ease forwards;
   padding: 0 20px;
   text-shadow: 0 0 10px rgba(134, 72, 255, 1);
+  font-family: "PingFang SC", "SF Pro SC", "Microsoft YaHei", "微软雅黑", system-ui, -apple-system, sans-serif;
+  font-weight: 500; /* 中等字重 */
 }
 
 .winners-grid {

@@ -665,7 +665,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(127, 57, 233, 0.15);
+  background: rgba(127, 57, 233, 0.3);  /* 淡紫色背景 */
   display: flex;
   justify-content: center;
   align-items: center;

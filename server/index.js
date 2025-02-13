@@ -55,47 +55,30 @@ app.get('/api/awards', (req, res) => {
       a.*,
       u.avatar,
       u.departmentName as userDepartment,
-      u.position,
-      u.id as user_id,
-      u.username as user_name
+      u.position
     FROM awards a
     LEFT JOIN users u ON a.userId = u.id
-    ORDER BY 
-      CASE a.titleName
-        WHEN '披星戴月奖' THEN 1
-        WHEN '技术先锋奖' THEN 2
-        WHEN '金牌销售奖' THEN 3
-        WHEN '扬帆起航奖' THEN 4
-        WHEN '行稳致远奖' THEN 5
-        WHEN '销售领航奖' THEN 6
-        WHEN '开疆拓土奖' THEN 7
-        WHEN '优秀干部奖' THEN 8
-        WHEN '大比武一等奖' THEN 9
-        WHEN '大比武二等奖' THEN 10
-        WHEN '大比武三等奖' THEN 11
-        WHEN '卓越贡献奖' THEN 12
-        WHEN '开发者大赛二等奖' THEN 13
-        WHEN '开发者大赛三等奖' THEN 14
-        ELSE 15
-      END,
-      a.id
   `;
+  
+  // 添加调试日志
+  console.log('执行查询...');
   
   db.all(query, [], (err, rows) => {
     if (err) {
+      console.error('查询出错:', err);
       res.status(500).json({ error: err.message });
       return;
     }
     
-    console.log('查询结果:', rows.map(row => ({
-      titleName: row.titleName,
-      userId: row.userId,
-      user_id: row.user_id,
-      username: row.username,
-      user_name: row.user_name,
-      avatar: row.avatar
-    })));
+    // 打印查询结果数量
+    console.log('查询到记录数:', rows?.length || 0);
     
+    if (!rows || rows.length === 0) {
+      console.log('数据库中没有数据，请先导入数据');
+      res.json([]);
+      return;
+    }
+
     // 按奖项分组
     const groupedAwards = rows.reduce((acc, award) => {
       if (!acc[award.titleName]) {
@@ -125,16 +108,26 @@ app.get('/api/awards', (req, res) => {
   });
 });
 
-// 添加导入数据的路由
+// 修改导入数据的路由，添加更多日志
 app.post('/api/import-data', (req, res) => {
   try {
+    console.log('开始导入数据...');
+    
+    // 检查文件是否存在
+    if (!require.resolve('./awards.json') || !require.resolve('./user.json')) {
+      throw new Error('找不到数据文件');
+    }
+
+    const awardsData = require('./awards.json').data.records;
+    const usersData = require('./user.json').data.records;
+
+    console.log(`读取到 ${awardsData.length} 条奖项数据`);
+    console.log(`读取到 ${usersData.length} 条用户数据`);
+
     // 先清空现有数据
     db.run("DELETE FROM users");
     db.run("DELETE FROM awards");
     
-    const awardsData = require('./awards.json').data.records;
-    const usersData = require('./user.json').data.records;
-
     // 导入用户数据前先打印日志
     console.log('导入用户数据:', usersData.map(user => ({
       id: user.id,

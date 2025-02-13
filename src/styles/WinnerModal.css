@@ -14,16 +14,17 @@
 }
 
 .winner-modal-content {
-  background: rgba(255, 255, 255, 0.8);  /* 半透明白色背景 */
-  backdrop-filter: blur(10px);  /* 毛玻璃效果 */
-  -webkit-backdrop-filter: blur(10px);  /* Safari 支持 */
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 700px;
-  width: 90%;
+  background: linear-gradient(45deg, rgba(127, 57, 233, 0.8), rgba(216, 160, 254, 0.8));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px;  /* 增加内边距 */
+  border-radius: 15px;  /* 增加圆角 */
+  max-width: 900px;  /* 增加最大宽度 */
+  width: 100%;
   position: relative;
-  color: #333;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);  /* 添加阴影效果 */
+  color: white;
+  box-shadow: 0 8px 32px 0 rgba(127, 57, 233, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .winner-modal-close-button {
@@ -43,8 +44,8 @@
 }
 
 .winner-modal-avatar {
-  width: 200px;
-  height: 200px;
+  width: 250px;  /* 增加头像尺寸 */
+  height: 250px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -55,8 +56,8 @@
 
 .winner-modal-name {
   text-align: left;
-  margin: 0 0 15px 0;
-  font-size: 24px;
+  margin: 0 0 20px 0;
+  font-size: 28px;  /* 增加标题字号 */
 }
 
 .winner-modal-department,
@@ -64,21 +65,20 @@
 .winner-modal-award-name,
 .winner-modal-reason {
   margin: 8px 0;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* 响应式布局 */
 @media (max-width: 1024px) {
   .winner-modal-content {
-    max-width: 600px;
-    padding: 30px;
+    max-width: 800px;
+    padding: 35px;
   }
 }
 
 @media (max-width: 768px) {
   .winner-modal-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    max-width: 90%;
     padding: 30px;
   }
 

@@ -5,24 +5,6 @@ import WinnerModal from './WinnerModal';
 import '../styles/HomePage.css';
 import awardDescriptions from '../data/awardDescriptions';
 
-// 定义奖项顺序
-const awardOrder = [
-  "披星戴月奖",
-  "技术先锋奖",
-  "金牌销售奖",
-  "扬帆起航奖",
-  "行稳致远奖",
-  "销售领航奖",
-  "开疆拓土奖",
-  "优秀干部奖",
-  "大比武一等奖",
-  "大比武二等奖",
-  "大比武三等奖",
-  "卓越贡献奖",
-  "开发者大赛二等奖",
-  "开发者大赛三等奖"
-];
-
 function HomePage() {
   const [awards, setAwards] = useState([]);
   const [currentAwardId, setCurrentAwardId] = useState(1);
@@ -38,16 +20,9 @@ function HomePage() {
     fetch('http://192.168.20.47:3001/api/awards')
       .then(res => res.json())
       .then(data => {
-        // 根据预定义顺序排序
-        const sortedData = data.sort((a, b) => {
-          const indexA = awardOrder.indexOf(a.name);
-          const indexB = awardOrder.indexOf(b.name);
-          return indexA - indexB;
-        });
-        
-        setAwards(sortedData);
-        if (sortedData.length > 0) {
-          setCurrentAwardId(sortedData[0].id);
+        setAwards(data);
+        if (data.length > 0) {
+          setCurrentAwardId(data[0].id);
         }
       })
       .catch(error => console.error('Error fetching awards:', error));

@@ -55,10 +55,30 @@ app.get('/api/awards', (req, res) => {
       a.*,
       u.avatar,
       u.departmentName as userDepartment,
-      u.position
+      u.position,
+      u.id as user_id,
+      u.username as user_name
     FROM awards a
     LEFT JOIN users u ON a.userId = u.id
-    ORDER BY a.titleId, a.id
+    ORDER BY 
+      CASE a.titleName
+        WHEN '披星戴月奖' THEN 1
+        WHEN '技术先锋奖' THEN 2
+        WHEN '金牌销售奖' THEN 3
+        WHEN '扬帆起航奖' THEN 4
+        WHEN '行稳致远奖' THEN 5
+        WHEN '销售领航奖' THEN 6
+        WHEN '开疆拓土奖' THEN 7
+        WHEN '优秀干部奖' THEN 8
+        WHEN '大比武一等奖' THEN 9
+        WHEN '大比武二等奖' THEN 10
+        WHEN '大比武三等奖' THEN 11
+        WHEN '卓越贡献奖' THEN 12
+        WHEN '开发者大赛二等奖' THEN 13
+        WHEN '开发者大赛三等奖' THEN 14
+        ELSE 15
+      END,
+      a.id
   `;
   
   db.all(query, [], (err, rows) => {
@@ -66,6 +86,15 @@ app.get('/api/awards', (req, res) => {
       res.status(500).json({ error: err.message });
       return;
     }
+    
+    console.log('查询结果:', rows.map(row => ({
+      titleName: row.titleName,
+      userId: row.userId,
+      user_id: row.user_id,
+      username: row.username,
+      user_name: row.user_name,
+      avatar: row.avatar
+    })));
     
     // 按奖项分组
     const groupedAwards = rows.reduce((acc, award) => {
@@ -105,6 +134,19 @@ app.post('/api/import-data', (req, res) => {
     
     const awardsData = require('./awards.json').data.records;
     const usersData = require('./user.json').data.records;
+
+    // 导入用户数据前先打印日志
+    console.log('导入用户数据:', usersData.map(user => ({
+      id: user.id,
+      username: user.username
+    })));
+
+    // 导入奖项数据前先打印日志
+    console.log('导入奖项数据:', awardsData.map(award => ({
+      userId: award.userId,
+      username: award.username,
+      titleName: award.titleName
+    })));
 
     // 导入用户数据
     const insertUser = db.prepare(`

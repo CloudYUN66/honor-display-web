@@ -32,7 +32,7 @@ function AdminPage() {
     formData.append('file', file);
 
     try {
-      await fetch('http://192.168.20.47:3001/api/import-winners', {
+      await fetch('/api/import-winners', {
         method: 'POST',
         body: formData,
       });
@@ -46,7 +46,7 @@ function AdminPage() {
   const handleImportData = async () => {
     try {
       setImporting(true);
-      const response = await fetch('http://192.168.20.47:3001/api/import-data', {
+      const response = await fetch('/api/import-data', {
         method: 'POST',
       });
       

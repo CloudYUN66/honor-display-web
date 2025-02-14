@@ -3,3 +3,6 @@ awards.json
 user.json
 awards.db
 awards.db-journal
+*.zip
+build/*
+

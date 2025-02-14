@@ -67,3 +67,9 @@ npm start
 1. 确保 awards.json 中的 userId 与 user.json 中的 id 正确对应
 2. 导入数据前会清空现有数据，请谨慎操作
 3. 建议定期备份 awards.db 数据库文件
+
+
+## 更新
+```bash
+bash ./update.sh
+```

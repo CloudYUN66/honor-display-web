@@ -17,7 +17,7 @@ function HomePage() {
   
   // 获取奖项数据
   useEffect(() => {
-    fetch('http://192.168.20.47:3001/api/awards')
+    fetch('/api/awards')
       .then(res => res.json())
       .then(data => {
         setAwards(data);

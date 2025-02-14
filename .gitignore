@@ -5,4 +5,5 @@ awards.db
 awards.db-journal
 *.zip
 build/*
+dist/*
 

@@ -16,10 +16,10 @@ ssh -p 443 root@116.205.182.99 "cd /project/deploys/honor_display/server && dock
 
 echo "打包前端"
 npm run build
-ls build.zip && rm -rf build.zip
-zip -q -r build.zip build/
-ssh -p 443 root@116.205.182.99 "cd /project/deploys/honor_display/ && rm -rf build"
-scp -P 443 build.zip root@116.205.182.99:/project/deploys/honor_display
-ssh -p 443 root@116.205.182.99 "cd /project/deploys/honor_display && unzip build.zip && rm -rf build.zip && docker-compose restart"
+ls dist.zip && rm -rf dist.zip
+zip -q -r dist.zip dist/
+ssh -p 443 root@116.205.182.99 "cd /project/deploys/honor_display/ && rm -rf dist"
+scp -P 443 dist.zip root@116.205.182.99:/project/deploys/honor_display
+ssh -p 443 root@116.205.182.99 "cd /project/deploys/honor_display && unzip dist.zip && rm -rf dist.zip && docker-compose restart"
 
 echo "更新完成"
